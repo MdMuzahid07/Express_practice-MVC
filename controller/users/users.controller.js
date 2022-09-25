@@ -20,7 +20,7 @@ const getUsers = (req, res, next) => {
 
 const getRandomUser = (req, res, next) => {
 
-    const randomId = parseInt(Math.random() * 9);
+    const randomId = parseInt(Math.random() * 10);
 
 
     const result = users[randomId];
