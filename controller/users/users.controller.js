@@ -61,7 +61,7 @@ const updateAUser = (req, res, next) => {
 
 
 
-    let update = allUsers.find(user => Number(user.id) === Number(id));
+    let update = users.find(user => Number(user.id) === Number(id));
 
     const newData = {
         id: id,
@@ -86,19 +86,18 @@ const updateAUser = (req, res, next) => {
 };
 
 const deleteAUser = (req, res, next) => {
-    const id = req.params;
-    const userCollection = users;
-    // const result = userCollection.find(user => user.id === Number(id));
-    console.log(result)
+    const { id } = req.params;
+    const filter = users.filter(user => Number(user.id) !== Number(id));
 
+    users = filter
 
     res.status(200).send({
         success: true,
         message: "Success",
-        data: id
+        data: users
     })
     res.status(500).send({
-        success: false,
+        success: true,
         error: "Internal server error,data not found!"
     })
 };
