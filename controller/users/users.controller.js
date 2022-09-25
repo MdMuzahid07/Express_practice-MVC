@@ -18,17 +18,17 @@ const getUsers = (req, res, next) => {
     })
 };
 
-const getUserDetails = (req, res, next) => {
+const getRandomUser = (req, res, next) => {
 
-    const { id } = req.params;
-    console.log(id)
+    const randomId = parseInt(Math.random() * 9);
 
-    const userDetails = users.find(user => user.id == Number(id));
+
+    const result = users[randomId];
 
     res.status(200).send({
         success: true,
         message: "success",
-        data: userDetails
+        data: result
     })
     res.status(500).send({
         success: false,
@@ -86,5 +86,5 @@ module.exports = {
     addAUser,
     updateAUser,
     deleteAUser,
-    getUserDetails
+    getRandomUser
 };

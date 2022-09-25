@@ -12,9 +12,8 @@ app.use(express.json());
 
 
 // main routes
-app.use("/user/random", usersRoute);
+app.use("/user", usersRoute);
 app.use("/user/all", usersRoute);
-app.use("/user/details", usersRoute);
 
 // index routes
 app.get("/", (req, res, nest) => {

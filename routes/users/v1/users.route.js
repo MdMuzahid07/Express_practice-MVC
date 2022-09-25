@@ -4,7 +4,8 @@ const {
     addAUser,
     updateAUser,
     deleteAUser,
-    getUserDetails
+    getUserDetails,
+    getRandomUser
 } = require('../../../controller/users/users.controller');
 const router = express.Router();
 
@@ -30,6 +31,6 @@ router.route("/")
     .delete(deleteAUser);
 
 // to get a user details
-router.route("/:id").get(getUserDetails);
+router.route("/random").get(getRandomUser);
 
 module.exports = router;
