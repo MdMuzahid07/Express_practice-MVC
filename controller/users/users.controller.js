@@ -36,6 +36,7 @@ const getRandomUser = (req, res, next) => {
     })
 }
 
+
 const addAUser = (req, res, next) => {
     const newUser = req.body;
     const userCollection = users.push(newUser);
@@ -53,13 +54,16 @@ const addAUser = (req, res, next) => {
 };
 
 const updateAUser = (req, res, next) => {
-    const data = "user updated"
+    const newData = req.body;
+    const { id } = req.params;
+    const filter = { _id: id }
 
+    const result = allUsers.map(user => user.id === Number(filter));
 
     res.status(200).send({
         success: true,
         message: "Success",
-        data: data
+        data: result
     })
     res.status(500).send({
         success: false,
@@ -68,13 +72,16 @@ const updateAUser = (req, res, next) => {
 };
 
 const deleteAUser = (req, res, next) => {
-    const data = "user deleted"
+    const id = req.params;
+    const userCollection = users;
+    // const result = userCollection.find(user => user.id === Number(id));
+    console.log(result)
 
 
     res.status(200).send({
         success: true,
         message: "Success",
-        data: data
+        data: id
     })
     res.status(500).send({
         success: false,

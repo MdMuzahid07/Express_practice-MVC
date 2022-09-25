@@ -15,6 +15,8 @@ app.use(express.json());
 app.use("/user", usersRoute);
 app.use("/user/all", usersRoute);
 app.use("/user/save", usersRoute);
+app.use("/user/update", usersRoute);
+app.use("/user/delete", usersRoute);
 
 
 
