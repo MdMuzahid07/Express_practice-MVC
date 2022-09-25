@@ -85,6 +85,35 @@ const updateAUser = (req, res, next) => {
     })
 };
 
+
+const bulkUpdate = (req, res, next) => {
+    const data = req.body;
+    const { id, gender, name, contact, address, photoUrl } = data;
+
+    let update = users;
+
+    const newData = {
+        id: id,
+        gender: gender,
+        name: name,
+        contact: contact,
+        address: address,
+        photoUrl: photoUrl
+    }
+
+    const bulkUpdate = Object.assign(update, newData);
+
+    res.status(200).send({
+        success: true,
+        message: "Success",
+        data: bulkUpdate
+    })
+    res.status(500).send({
+        success: false,
+        error: "Internal server error,data not found!"
+    })
+}
+
 const deleteAUser = (req, res, next) => {
     const { id } = req.params;
     const filter = users.filter(user => Number(user.id) !== Number(id));
@@ -106,6 +135,7 @@ module.exports = {
     getUsers,
     addAUser,
     updateAUser,
+    bulkUpdate,
     deleteAUser,
     getRandomUser
 };
