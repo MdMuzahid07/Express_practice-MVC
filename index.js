@@ -14,6 +14,13 @@ app.use(express.json());
 // main routes
 app.use("/user", usersRoute);
 app.use("/user/all", usersRoute);
+app.use("/user/save", usersRoute);
+
+
+
+
+
+
 
 // index routes
 app.get("/", (req, res, nest) => {

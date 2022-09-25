@@ -37,13 +37,14 @@ const getRandomUser = (req, res, next) => {
 }
 
 const addAUser = (req, res, next) => {
-    const data = "user added"
+    const newUser = req.body;
+    const userCollection = users.push(newUser);
 
 
     res.status(200).send({
         success: true,
         message: "Success",
-        data: data
+        data: newUser
     })
     res.status(500).send({
         success: false,
