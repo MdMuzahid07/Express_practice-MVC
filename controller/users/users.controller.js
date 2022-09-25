@@ -1,4 +1,4 @@
-const users = require('../../public/users.json');
+let users = require('../../public/users.json');
 
 
 const getUsers = (req, res, next) => {
@@ -45,7 +45,7 @@ const addAUser = (req, res, next) => {
     res.status(200).send({
         success: true,
         message: "Success",
-        data: newUser
+        data: userCollection
     })
     res.status(500).send({
         success: false,
@@ -54,16 +54,30 @@ const addAUser = (req, res, next) => {
 };
 
 const updateAUser = (req, res, next) => {
-    const newData = req.body;
+    const data = req.body;
+    const { gender, name, contact, address, photoUrl } = data;
     const { id } = req.params;
-    const filter = { _id: id }
+    const allUsers = users;
 
-    const result = allUsers.map(user => user.id === Number(filter));
+
+
+    let update = allUsers.find(user => Number(user.id) === Number(id));
+
+    const newData = {
+        id: id,
+        gender: gender,
+        name: name,
+        contact: contact,
+        address: address,
+        photoUrl: photoUrl
+    }
+
+    const marge = Object.assign(update, newData);
 
     res.status(200).send({
         success: true,
         message: "Success",
-        data: result
+        data: marge
     })
     res.status(500).send({
         success: false,
